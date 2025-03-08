@@ -1,0 +1,89 @@
+#container 
+
+   .mainname {
+    font: impact; 
+    color: darkgray;
+    font-style: italic;
+  } 
+
+
+   .contact2 {
+    font: arial; color: darkgray;
+  } 
+  
+  .pro-title {
+     font: impact;
+     color: darkgrey;
+     font-style: italic;
+
+  }
+
+
+  .pro-title3 {
+   font: impact;
+   color: darkgrey;
+   font-style: italic;
+
+}
+  
+  .pro-image {
+
+  }
+
+  .pro-subtitle {
+    font: impact;
+    color: rgb(100, 6, 6);
+    font-style: italic;
+
+ }
+
+
+  
+
+
+#header 
+
+   .mainname {
+    font-family: 'Poppins', sans-serif; 
+    color: darkgray;
+    font-style: italic;
+  } 
+
+#content 
+
+
+#sidebar 
+		
+    
+
+#panel-footer1
+
+.pro-title3 {
+   font: impact;
+   color: darkgrey;
+   font-style: italic;
+
+}
+
+
+
+.foot-style { background-color: lightgray;}
+
+#page-header
+
+h1 {
+    color: #FFFF33;
+    text-align: center;
+    font: italic 200% fantasy;
+   }
+
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+
+

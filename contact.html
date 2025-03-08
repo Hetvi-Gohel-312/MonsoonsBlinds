@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Premium Contact Page</title>
+
+    <!-- bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <!-- style css -->
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <!-- Responsive-->
+    <link rel="stylesheet" href="css/responsive.css" />
+    <!-- fevicon -->
+    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+    <!-- font css -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css" />
+    <!-- Tweaks for older IEs-->
+    <link
+      rel="stylesheet"
+      href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+    />
+
+    <style>
+      /* General Styles */
+      * {
+        box-sizing: border-box;
+        transition: all 0.3s ease-in-out;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        font-size: 15px;
+        color: #333;
+        line-height: 1.8;
+        font-weight: normal;
+        overflow-x: hidden;
+        background-image: url("images/banner-bg.png"),
+          url("images/client-bg.png");
+        background-position: top, center 70%;
+        background-repeat: no-repeat, no-repeat;
+        background-size: 100% auto, 100% auto;
+      }
+
+      
+
+      .container {
+        width: 85%;
+        max-width: 1200px;
+        margin: auto;
+        padding: 40px;
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 30px;
+        font-weight: bold;
+        color: #d78373;
+        text-transform: uppercase;
+      }
+
+      h3{
+        font-size: 26px;
+        color: darkblue;
+        text-transform: uppercase;
+      }
+
+      /* Contact Form */
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 16px;
+      }
+      /* Error Highlight */
+      .contact-form input.error,
+      .contact-form textarea.error {
+        border: 2px solid red;
+        background: #ffeeee;
+      }
+
+      .contact-form textarea {
+        resize: none;
+        height: 120px;
+      }
+
+      /* Input Focus Effect */
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        border-color: #d78373;
+        box-shadow: 0 0 10px rgba(215, 131, 115, 0.4);
+      }
+
+      /* Validation Message */
+      .error-msg {
+        color: red;
+        font-size: 14px;
+        text-align: left;
+        margin-top: -8px;
+        display: none;
+      }
+
+      /* Character Counter */
+      .char-counter {
+        text-align: right;
+        font-size: 14px;
+        color: #666;
+      }
+
+      /* Submit Button */
+      .submit-btn {
+        background: #d78373;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out, transform 0.2s;
+      }
+
+      .submit-btn:hover {
+        background: #c76b63;
+        transform: scale(1.05);
+      }
+
+      /* Google Map */
+      .map-container {
+        margin-top: 40px;
+        width: 100%;
+        height: 300px;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      /* Dark Mode */
+      .dark-mode {
+        background: #222;
+        color: white;
+      }
+
+      .dark-mode .container {
+        background: #333;
+        color: white;
+      }
+
+      .dark-mode input,
+      .dark-mode textarea {
+        background: #444;
+        color: white;
+        border-color: #666;
+      }
+
+      .dark-mode-toggle {
+        position: fixed;
+        top: 60px;
+        right: 50px;
+        background: #d78373;
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 18px;
+        transition: background 0.3s, transform 0.3s;
+      }
+      .dark-mode-toggle:hover {
+        background: #c76b63;
+        transform: scale(1.1);
+      }
+
+      .toast {
+        position: fixed;
+        bottom: -50px;
+        right: 20px;
+        background: green;
+        color: white;
+        padding: 15px;
+        border-radius: 5px;
+        display: none;
+        transition: bottom 0.5s ease-in-out;
+      }
+
+      .toast.show {
+        bottom: 20px;
+      }
+/*Call Actions*/
+/* Contact Actions Section */
+.contact-actions {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Call to Action Buttons */
+.cta-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.cta-buttons a {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 20px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.cta-buttons .whatsapp-chat { background: green !important; }
+
+/* FAQ Section */
+.faq-section {
+    margin-top: 30px;
+}
+
+.faq-section details {
+    margin: 10px 0;
+    cursor: pointer;
+    font-size: 18px;
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.faq-section summary {
+    cursor: pointer;
+    color: maroon;
+   font-weight: bold;
+}
+
+      /*footer*/
+
+      li a {
+        color: black; /* Set text color to black */
+        text-decoration: none; /* Remove underline */
+      }
+
+      li a:hover {
+        color: #333; /* Optional: darker shade on hover */
+      }
+
+      li .fa {
+        color: black; /* Set the icon color to black */
+      }
+
+      li span {
+        color: black; /* Ensure the text within the span is black */
+      }
+
+      .footer_text,
+      .address_text {
+        color: #333;
+      }
+      .footer_social_icon {
+        width: 100%;
+        float: right;
+        text-align: right;
+      }
+
+      .navbar-expand-lg .navbar-nav .nav-link {
+        padding: 10px 20px;
+        font-size: 18px;
+        color: #a9a8a8;
+        border-radius: 5px;
+        text-transform: uppercase;
+        transition: color 0.3s, background 0.3s;
+      }
+
+      .footer_social_icon ul {
+        margin: 0px;
+        padding: 0px;
+        display: inline-block;
+      }
+
+      .footer_social_icon li {
+        float: left;
+      }
+
+      .footer_social_icon li a {
+        float: left;
+        padding: 5px 10px;
+        background-color: palevioletred;
+        color: black;
+        border-radius: 100%;
+        font-size: 19px;
+        margin-right: 5px;
+        width: 44px;
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .footer_social_icon li a:hover {
+        background-color: mediumorchid;
+        color: #363636;
+      }
+
+      .update_mail {
+        color: #3b3b3b;
+        width: 100%;
+        height: 55px;
+        font-size: 18px;
+        padding: 10px 20px 0px 20px;
+        background-color: black;
+        margin: 0 auto;
+        justify-content: center;
+        align-items: center;
+        display: block;
+        margin-top: 20px;
+        border: 0px;
+      }
+
+      textarea#comment.update_mail::placeholder {
+        color: #3b3b3b;
+      }
+
+      .form-group {
+        margin-bottom: 1rem;
+        display: flex;
+        width: 50%;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .subscribe_bt {
+        width: 70px;
+        float: left;
+        padding-top: 20px;
+      }
+
+      .subscribe_bt a {
+        width: 100%;
+        float: left;
+        color: black;
+        font-size: 16px;
+        padding: 13px 0px 14px 0px;
+        background-color: #d07d6b;
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+      .subscribe_bt a:hover {
+        color: #363636;
+        background-color: #d07d6b;
+      }
+
+      /* footer section end */
+
+      /* copyright section start */
+      .copyright_section {
+        width: 100%;
+
+        background-color: #d07d6b;
+        height: auto;
+        padding: 10px 0;
+        transition: background-color 0.3s ease-in-out;
+      }
+
+      /* Hover effect on the entire footer */
+      .copyright_section:hover {
+        background-color: #bb6a5a;
+      }
+
+      /* Copyright text */
+      .copyright_text {
+        width: 100%;
+        float: left;
+        font-size: 16px;
+        color: black;
+        text-align: center;
+        font-family: "Poppins", sans-serif;
+        transition: color 0.3s ease-in-out;
+        white-space: normal;
+        word-wrap: break-word;
+      }
+
+      /* Hover effect on text */
+      .copyright_text:hover {
+        color: maroon;
+        text-shadow: 0px 0px 8px rgba(255, 223, 191, 0.8);
+      }
+
+      /* Social Icons */
+      .footer_social_icon {
+        float: none;
+        text-align: center;
+        margin-top: 10px;
+      }
+      .footer_social_icon ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .footer_social_icon ul li {
+        display: inline-block;
+      }
+
+      /* Icon styling */
+      .footer_social_icon ul li a {
+        font-size: 18px;
+        transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+      }
+
+      /* Hover effect on social icons */
+      .footer_social_icon ul li a:hover {
+        color: maroon;
+        transform: scale(1.2);
+      }
+
+      .privacy_link {
+        color: black;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .privacy_link:hover {
+        color: blueviolet;
+        text-decoration: underline;
+        text-shadow: 0px 0px 8px rgba(255, 223, 191, 0.8);
+      }
+      /* copyright section end */
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <h1 style="font-size: clamp(18px, 8vw, 36px) ; color: black"><b> Bao Blinds </b></h1>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#products">Products</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Dark Mode Toggle Button -->
+    <div class="dark-mode-toggle" onclick="toggleDarkMode()">
+      <i class="fas fa-moon" id="darkModeIcon"></i>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="container">
+      <h1>Contact Us</h1>
+
+      <!-- Contact Form -->
+      <form class="contact-form" id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required />
+        <p class="error-msg" id="nameError">Name is required.</p>
+
+        <input type="email" id="email" placeholder="Your Email" required />
+        <p class="error-msg" id="emailError">Valid email is required.</p>
+
+        <textarea
+          id="message"
+          placeholder="Your Message"
+          maxlength="200"
+          required
+        ></textarea>
+        <p class="char-counter"><span id="charCount">0</span>/200</p>
+        <p class="error-msg" id="messageError">Message cannot be empty.</p>
+
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+       <!-- Contact Action Section -->
+<div class="contact-actions">
+  <!-- FAQ Section -->
+  <div class="faq-section">
+      <h3><Strong>❓ Frequently Asked Questions</Strong></h3>
+      <details>
+          <summary>What are your working hours?</summary>
+          <p>We are available from 9 AM to 6 PM (Mon-Sat).</p>
+      </details>
+      <details>
+          <summary>How can I contact customer support?</summary>
+          <p>You can chat via WhatsApp, call, or email us anytime.</p>
+      </details>
+      <details>
+          <summary>Do you offer refunds?</summary>
+          <p>Yes, refunds are available within 7 days of purchase.</p>
+      </details>
+  </div>
+  <!-- Call to Action Buttons -->
+  <div class="cta-buttons">
+    <a href="tel:+91 6379499902">📞 Call Now</a>
+    <a href="mailto:info@monsoonblinds.com">📧 Email Us</a>
+    <a href="https://api.whatsapp.com/send?phone=916380655921&text=Hey%20Bao%20Blinds,%20can%20you%20share%20me%20more%20details,%20I%20am%20located%20at" class="whatsapp-chat" target="_blank">💬 Chat on WhatsApp</a>
+</div>
+</div>
+
+</div>
+
+
+
+      <!-- Google Map -->
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps/embed?..."
+          width="100%"
+          height="100%"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">Message Sent Successfully!</div>
+
+    <!-- footer section start -->
+    <div class="footer_section layout_padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="address_text">Address</h1>
+            <p class="footer_text">
+              Bangalore: Hennur, Chennai: Vyasarpadi, Hyderabad: Chengicherla X
+              Rd, Coimbatore: Siddhapudur
+            </p>
+            <div class="location_text">
+              <ul>
+                <li>
+                  <a href="index.html#">
+                    <i class="fa fa-phone" aria-hidden="true"></i
+                    ><span class="padding_left_10">+91 6379499902</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="index.html#">
+                    <i class="fa fa-envelope" aria-hidden="true"></i
+                    ><span class="padding_left_10">info@monsoonblinds.com</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- footer section end -->
+
+    <!-- copyright section start -->
+    <div class="copyright_section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-sm-12 text-center text-lg-start">
+            <p class="copyright_text">
+              2024 All Rights Reserved. <br />
+              <a href="privacy-policy.html" class="privacy_link"
+                >Privacy Policy</a
+              >
+            </p>
+          </div>
+          <div class="col-lg-6 col-sm-12 text-center text-lg-end">
+            <div class="footer_social_icon">
+              <ul>
+                <li>
+                  <a href="#"
+                    ><i class="fa fa-facebook" aria-hidden="true"></i
+                  ></a>
+                </li>
+                <li>
+                  <a href="#"
+                    ><i class="fa fa-twitter" aria-hidden="true"></i
+                  ></a>
+                </li>
+                <li>
+                  <a href="#"
+                    ><i class="fa fa-linkedin" aria-hidden="true"></i
+                  ></a>
+                </li>
+                <li>
+                  <a href="#"
+                    ><i class="fa fa-instagram" aria-hidden="true"></i
+                  ></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- copyright section end -->
+    <!-- Javascript files-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.0.0.min.js"></script>
+    <script src="js/plugin.js"></script>
+    <!-- sidebar -->
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="js/custom.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript -->
+    <script>
+      // Toggle Dark Mode
+      function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+        let icon = document.getElementById("darkModeIcon");
+        icon.classList.toggle("fa-moon");
+        icon.classList.toggle("fa-sun");
+      }
+
+      document.getElementById("message").addEventListener("input", function () {
+        document.getElementById("charCount").textContent = this.value.length;
+      });
+
+      // Form Validation
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          let valid = true;
+
+          let name = document.getElementById("name");
+          let email = document.getElementById("email");
+          let message = document.getElementById("message");
+
+          if (name.value.trim() === "") {
+            name.classList.add("error");
+            document.getElementById("nameError").style.display = "block";
+            valid = false;
+          } else {
+            name.classList.remove("error");
+            document.getElementById("nameError").style.display = "none";
+          }
+
+          if (!email.value.includes("@")) {
+            email.classList.add("error");
+            document.getElementById("emailError").style.display = "block";
+            valid = false;
+          } else {
+            email.classList.remove("error");
+            document.getElementById("emailError").style.display = "none";
+          }
+
+          if (message.value.trim() === "") {
+            message.classList.add("error");
+            document.getElementById("messageError").style.display = "block";
+            valid = false;
+          } else {
+            message.classList.remove("error");
+            document.getElementById("messageError").style.display = "none";
+          }
+
+          if (valid) {
+            document.getElementById("toast").style.display = "block";
+            setTimeout(
+              () => (document.getElementById("toast").style.display = "none"),
+              3000
+            );
+          }
+        });
+
+      function showToast() {
+        let toast = document.getElementById("toast");
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 3000);
+      }
+
+      function toggleFAQ(num) {
+            let answer = document.getElementById('faq' + num);
+            answer.style.display = (answer.style.display === 'block') ? 'none' : 'block';
+        }
+    </script>
+  </body>
+</html>
